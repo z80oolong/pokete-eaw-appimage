@@ -80,6 +80,7 @@
 [SNAP]:https://snapcraft.io/
 [FLAT]:https://flatpak.org/
 [POKE]:https://github.com/lxgr-linux/pokete
+[PEAW]:https://gist.github.com/z80oolong/c7523367b798bdda094f859342f4c8be
 [BREW]:https://docs.brew.sh/Homebrew-on-Linux
 [VAGR]:https://www.vagrantup.com/
 [VDWN]:https://www.vagrantup.com/downloads
