@@ -2,7 +2,7 @@ module Config
   module_function
 
   def stable_version_list
-    return %w(0.6.0 0.7.0 0.7.1 0.7.2 0.7.3)
+    return %w(0.6.0 0.7.0 0.7.1 0.7.2 0.7.3 0.8.0)
   end
 
   def stable_version
@@ -18,7 +18,7 @@ module Config
   end
 
   def commit_long
-    return "3a6065d5d80c0791fd9a5c52313a7ad57d667d6e"
+    return "f21aa1d1daa3b1b4655070cb4fab49a2e733d465"
   end
 
   def commit
@@ -42,7 +42,7 @@ module Config
   end
 
   def appimage_revision
-    return 37
+    return 38
   end
 
   def release_dir
