@@ -2,7 +2,7 @@ module Config
   module_function
 
   def stable_version?
-    return false
+    return true
   end
 
   def appimage_tap_name
@@ -27,7 +27,7 @@ module Config
 
   def current_version
     if stable_version? then
-      return "20220429"
+      return "0.6.0"
     else
       return "HEAD-#{commit}"
     end
