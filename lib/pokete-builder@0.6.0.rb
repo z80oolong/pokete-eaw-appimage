@@ -36,7 +36,7 @@ class PoketeBuilder < AppImage::Builder
     export LC_ALL="en_US.UTF-8"
     export PYTHON_HOME="${APPDIR}/usr/libexec/squashfs-root/usr"
 
-    exec ${APPDIR}/usr/libexec/squashfs-root/usr/bin/python3.9 ${APPDIR}/usr/libexec/pokete/pokete.py "$@"
+    exec ${APPDIR}/usr/libexec/squashfs-root/opt/python3.9/bin/python3.9 ${APPDIR}/usr/libexec/pokete/pokete.py "$@"
     EOS
   end
 

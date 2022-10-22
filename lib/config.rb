@@ -1,99 +1,77 @@
 module Config
   module_function
 
-  def stable_version_list
-    return %w(0.6.0 0.7.0 0.7.1 0.7.2 0.7.3 0.8.0)
+  def stable_version?
+    return false
   end
 
-  def stable_version
-    return stable_version_list[-1]
+  def appimage_tap_name
+    return "z80oolong/appimage"
   end
 
-  def devel_version_list
-    return []
+  def current_tap_name
+    return "z80oolong/game"
   end
 
-  def devel_version
-    return ""
+  def current_formula_name
+    return "pokete"
+  end
+
+  def current_builder_name
+    return "pokete-builder"
+  end
+
+  def current_appimage_name
+    return "#{current_formula_name}-eaw"
+  end
+
+  def current_version
+    if stable_version? then
+      return "20220429"
+    else
+      return "HEAD-#{commit}"
+    end
+  end
+
+  def all_stable_version
+    return %w[0.6.0 0.7.0 0.7.1 0.7.2 0.7.3 0.8.0 0.8.1 0.8.2 0.9.0]
+  end
+
+  def current_head_formula_version
+    return "1.0.0-next"
+  end
+
+  def all_stable_formulae
+    return all_stable_version.map do |v|
+      "#{Config::current_tap_name}/#{Config::current_formula_name}@#{v}"
+    end
+  end
+
+  def current_head_formula
+    return "#{lib_dir}/#{current_formula_name}@#{current_head_formula_version}.rb"
   end
 
   def commit_long
-    return "f21aa1d1daa3b1b4655070cb4fab49a2e733d465"
+    return "9bfbdc5a141a68e56eec4d500c3915e331354132"
   end
 
   def commit
     return commit_long[0..7]
   end
 
-  def commit_sha256
-    @@curl ||= %x{which curl}.chomp!
-    @@sha256sum ||= %x{which sha256sum}.chomp!
-    @@archive_url ||= "https://github.com/lxgr-linux/pokete/archive"
-    @@commit_sha256 ||= %x{#{@@curl} -s -L -o - #{@@archive_url}/#{commit_long}.tar.gz | #{@@sha256sum} -}.chomp.gsub(/^([0-9a-f]*).*/) { $1 }
-    return @@commit_sha256
-  end
-
-  def head_version
-    return "1.0.0-next"
-  end
-
-  def appimage_version
-    return "v#{stable_version}-eaw-appimage-0.0.1"
-  end
-
-  def appimage_revision
-    return 38
+  def current_appimage_revision
+    return 50
   end
 
   def release_dir
     return "/vagrant/opt/releases"
   end
 
-  def formula_dir
-    return "/vagrant/opt/formula"
-  end
-
   def lib_dir
     return "/vagrant/lib"
   end
 
-  def appimage_builder_rb
-    return "pokete-builder.rb"
-  end
-
-  def appimage_name
-    return "pokete-eaw"
-  end
-
-  def appimage_command
-    return "pokete"
-  end
-
   def appimage_arch
     return "x86_64"
-  end
-
-  def formula_tap
-    return "z80oolong/game"
-  end
-
-  def formula_name
-    return "pokete"
-  end
-
-  def formula_fullname
-    return "#{formula_tap}/#{formula_name}"
-  end
-
-  def formula_desc
-    return "AppImage package of a terminal based Pokemon like game."
-  end
-
-  def formula_homepage
-    return "https://lxgr-linux.github.io/pokete"
-  end
-
-  def formula_download_url
-    return "https://github.com/z80oolong/pokete-eaw-appimage/releases/download"
   end
 end

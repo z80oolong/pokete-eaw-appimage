@@ -6,12 +6,11 @@ class PoketeAT100Next < Formula
   desc "A terminal based Pokemon like game"
   homepage "https://lxgr-linux.github.io/pokete"
   license "GPL-3.0"
-  revision 1
+  revision 2
 
   stable do
     pokete_version = "HEAD-#{Config::commit}"
     url "https://github.com/lxgr-linux/pokete/archive/#{Config::commit_long}.tar.gz"
-    sha256 Config::commit_sha256
     version pokete_version
 
     patch :p1, Formula["z80oolong/game/pokete"].diff_data
@@ -23,8 +22,8 @@ class PoketeAT100Next < Formula
   depends_on "python@3.9" => :recommended
 
   resource("appimage-python3.9") do
-    url "https://github.com/niess/python-appimage/releases/download/python3.9/python3.9.12-cp39-cp39-manylinux2014_x86_64.AppImage"
-    sha256 "318b380d944e30ff7dda62c1baa92307ed08f1aa160ebcdd68a4e7c428e68416"
+    url "https://github.com/niess/python-appimage/releases/download/python3.9/python3.9.15-cp39-cp39-manylinux2014_x86_64.AppImage"
+    sha256 "93087e57e51eeeb33da8ceec8f70627d0c19c9655f78099bb96cedafab9f542f"
   end if build.without?("python@3.9")
 
   resource("scrap_engine") do
@@ -46,8 +45,8 @@ class PoketeAT100Next < Formula
 
     if build.without?("python@3.9") then
       resource("appimage-python3.9").stage do
-        (Pathname.pwd/"python3.9.12-cp39-cp39-manylinux2014_x86_64.AppImage").chmod(0755)
-        system "./python3.9.12-cp39-cp39-manylinux2014_x86_64.AppImage", "--appimage-extract"
+        (Pathname.pwd/"python3.9.15-cp39-cp39-manylinux2014_x86_64.AppImage").chmod(0755)
+        system "./python3.9.15-cp39-cp39-manylinux2014_x86_64.AppImage", "--appimage-extract"
         libexec.install "./squashfs-root"
       end
 
